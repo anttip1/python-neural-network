@@ -37,15 +37,15 @@ def initialize_weights(neurons):
 	return weights
 		
 		
-weights = initialize_weights([2,3,3,1])
+weights = initialize_weights([2,5,1])
 
-# Let's train the network to recognize logic AND-gate. 
+# Let's train the network to recognize logic XOR-gate. 
 inputs = [np.array([[1,1]]),np.array([[1,0]]), np.array([[0,1]]), np.array([[0,0]])]
-targets = [np.array([[1]]), np.array([[0]]), np.array([[0]]), np.array([[0]])]
+targets = [np.array([[0]]), np.array([[1]]), np.array([[1]]), np.array([[0]])]
 
-learning_rate = 0.5
+learning_rate = 0.4
 
-iterations = 20000
+iterations = 15000
 iteration = 0
 
 
@@ -76,7 +76,7 @@ while iteration < iterations:
 		derivatives.append(np.diag(derivative_of_sigmoid(output[0,:])))
 			
 
-	print("Iteration: {}. For input {} the neural network returned {}, while target is {}".format(iteration, inputs[selected_input], output, targets[selected_input]))
+	print("Iteration: {}. For input {} the neural network returned {}, while target is {}".format(iteration+1, inputs[selected_input], output, targets[selected_input]))
 
 	# for the output neuron layer: delta = (o - t) * sigmoid'(o)
 	# o is the output vector, t is the target vector and sigmoid' is the derivative of sigmoid 
